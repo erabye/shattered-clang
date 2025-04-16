@@ -13,8 +13,8 @@ done
 # Get home directory
 HOME_DIR="$(pwd)"
 
-GH_USER=fukiame
-GH_REPO=Geopelia-Clang
+GH_USER=erabye
+GH_REPO=shattered-clang
 
 # Build LLVM
 echo "building LLVM..."
