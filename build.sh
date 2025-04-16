@@ -38,8 +38,8 @@ send_msg "gh $RUN_NUM: building LLVM"
     --shallow-clone \
     --targets AArch64 ARM X86 \
     --lto thin \
-    --clang-vendor-string "Geopelia" \
-    --lld-vendor-string "Gino"
+    --clang-vendor-string "shattered" \
+    --lld-vendor-string "lost"
 
 # Check if the final clang binary exists or not
 for file in install/bin/clang-[1-9]*; do
