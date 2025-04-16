@@ -29,6 +29,7 @@ echo "building LLVM..."
     --shallow-clone \
     --targets AArch64 ARM X86 \
     --lto thin \
+    --pgo kernel-defconfig-slim \
     --clang-vendor-string "shattered" \
     --lld-vendor-string "lost"
 
