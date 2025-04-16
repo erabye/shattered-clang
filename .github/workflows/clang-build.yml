@@ -10,7 +10,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  RUN_NUM: ${{ github.run_number }}_${{ github.run_attempt }}
   BRANCH: ${{ github.event.inputs.BRANCH }}
 
 jobs:
