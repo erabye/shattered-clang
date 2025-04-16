@@ -74,8 +74,8 @@ popd || exit
 llvm_commit_url="https://github.com/llvm/llvm-project/commit/$short_llvm_commit"
 clang_version="$("$HOME_DIR"/install/bin/clang --version | head -n1 | cut -d' ' -f4)"
 build_date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d")"
-tags="Geopelia-Clang-$clang_version"
-file="Geopelia-Clang-$clang_version.tar.gz"
+tags="shattered-Clang-$clang_version"
+file="shattered-Clang-$clang_version.tar.gz"
 
 # Get binutils version
 binutils_version=$(grep "LATEST_BINUTILS_RELEASE" build-binutils.py)
