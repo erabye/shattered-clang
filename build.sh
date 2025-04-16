@@ -13,20 +13,11 @@ done
 # Get home directory
 HOME_DIR="$(pwd)"
 
-# Telegram setup
-send_msg() {
-    bash "$HOME_DIR/tg_utils.sh" msg "$1"
-}
-send_file() {
-    bash "$HOME_DIR/tg_utils.sh" up "$1" "$2"
-}
-
 GH_USER=fukiame
 GH_REPO=Geopelia-Clang
 
 # Build LLVM
 echo "building LLVM..."
-send_msg "gh $RUN_NUM: building LLVM"
 
 ./build-llvm.py \
     --defines LLVM_PARALLEL_COMPILE_JOBS="$(nproc)" LLVM_PARALLEL_LINK_JOBS="$(nproc)" CMAKE_C_FLAGS=-O3 CMAKE_CXX_FLAGS=-O3 \
@@ -47,14 +38,12 @@ for file in install/bin/clang-[1-9]*; do
         echo "LLVM build successful"
     else
         echo "LLVM build failed"
-        send_msg "gh $RUN_NUM: LLVM build failed"
         exit 1
     fi
 done
 
 # Build binutils
 echo "building binutils..."
-send_msg "gh $RUN_NUM: building binutils"
 ./build-binutils.py \
     --install-folder "$HOME_DIR/install" \
     --targets arm aarch64 x86_64
@@ -153,8 +142,3 @@ while [ "$failed" == "y" ] && [ "$attempts" -le "10" ]; do
         --replace || failed=y
     attempts=$(( attempts + 1 ))
 done
-
-[ "$failed" == "y" ] && { send_msg "gh $RUN_NUM: failed in $((SECONDS / 60))m and $((SECONDS % 60))s" && exit 1 ; }
-
-# Send message to telegram
-send_msg "gh $RUN_NUM: done in $((SECONDS / 60))m and $((SECONDS % 60))s%nlgh $RUN_NUM: clang version: $clang_version%nlgh $RUN_NUM: binutils version: $binutils_version%nlgh $RUN_NUM: llvm commit: $llvm_commit_url"
