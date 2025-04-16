@@ -6,7 +6,7 @@ on:
       BRANCH:
         description: 'LLVM branch'
         required: true
-        default: 'main'
+        default: 'release/15.x'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
