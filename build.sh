@@ -3,7 +3,7 @@
 
 # Environment checker
 echo "Checking environment ..."
-for environment in BOT_TOKEN CHAT_ID GITHUB_TOKEN BRANCH; do
+for environment in GITHUB_TOKEN BRANCH; do
     [ -z "${!environment}" ] && {
         echo "$environment is not set, bailing out"
         exit 1
